@@ -1,0 +1,51 @@
+{
+  "env": {
+    "dev": {
+      "presets": [
+        ["env", {
+          "loose": true,
+          "debug": true,
+          "targets": {
+            "browsers": ["last 1 versions", "safari >= 10"]
+          }
+        }],
+        "react",
+        "stage-1"
+      ],
+      "plugins": [[
+        "transform-runtime",
+          {
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": true,
+            "moduleName": "babel-runtime"
+          }
+        ],
+        "add-module-exports", "syntax-dynamic-import",
+        "transform-async-to-generator", "transform-decorators-legacy", ["import", {
+          "libraryName": "antd",
+          "libraryDirectory": "es",
+          "style": true
+        }]
+      ]
+    },
+    "prod": {
+      "presets": ["react", [
+        "env",
+        {
+          "targets": {
+            "browsers": ["> 2%", "last 12 versions", "IE > 7"]
+          }
+        }
+      ], "stage-1"],
+      "plugins": ["transform-runtime", "add-module-exports",
+        "transform-object-assign", "syntax-dynamic-import",
+        "transform-async-to-generator", "transform-decorators-legacy", ["import", {
+          "libraryName": "antd",
+          "libraryDirectory": "es",
+          "style": true
+        }]
+      ]
+    }
+  }
+}
